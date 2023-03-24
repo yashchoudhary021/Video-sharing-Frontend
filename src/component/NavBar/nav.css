@@ -1,0 +1,49 @@
+.Container {
+    background-color: black;
+    color: white;
+    height: 10vh;
+    display: flex;
+    position: sticky;
+    top: 0;
+    /* padding-left: 2%;
+    padding-right: 2%; */
+    padding: 1% 2%;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #80accf;
+    text-decoration: none;
+}
+
+.input {
+    width: 50vw;
+    background-color: rgb(28, 27, 27);
+    padding: 10px;
+    border-radius: 40px;
+    margin-left: 8%;
+    color: white;
+    border: 1px solid gray;
+}
+
+.com-btn {
+    float: right;
+    font-weight: 400;
+    color: rgb(180, 176, 176);
+    margin-left: auto;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-1:hover {
+    color: rgb(197, 47, 247);
+    text-decoration: underline;
+}
+
+.btn-2:hover {
+    color: rgb(197, 47, 247);
+    text-decoration: underline;
+}

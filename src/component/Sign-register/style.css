@@ -1,0 +1,88 @@
+main{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.sec-first{
+    width: 50%;
+    height: 100%;
+    /* background-color: black; */
+    background-image: url("../../Assets/What\'s\ a\ new\ promo\ today.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.sec-first h1{
+    font-size: 105px;
+    margin: 132px 0 0 50px;
+    color: #ad3cea;
+}
+
+.sec-first div{
+    font-size: 35px;
+    color: white;
+    margin: 12px 0 0 55px;
+    width: 350px;
+}
+.sec-first button{
+    background-color: black;
+    border: 0;
+    color: white;
+    font-size: large;
+    text-decoration: underline;
+    margin: 170px 0 0 50px;
+    cursor: pointer;
+}
+
+.sec-second{
+    background-color: rgb(18, 18, 41);
+    color: white;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+.sec-second form{
+    margin-top: 0.1%;
+}
+.sec-second form h1{
+    font-size: 3rem;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.sec-second form input{
+    padding: 1% 1%;
+    width: 45%;
+    margin-bottom: 2.56%;
+    color: white;
+    background-color: rgb(18, 18, 41);
+    border: 0px;
+    border-bottom: 1px solid white;
+}
+
+.sec-second form button {
+    margin-top: 3%;
+    margin-bottom: 6.3%;
+    padding: 2% 4%;
+    width: 15%;
+    height: 12%;
+    color: white;
+    background-color: #cc89f0;
+    border-radius: 30px;
+    border: 0;
+    cursor: pointer;
+}
+
+.register form{
+ padding: 0%; 
+}
+/* #btn-circle{
+    border-radius: 50%;
+    width: 50px;
+    font-size: large;
+    height: 50px;
+    background-color: rgb(160, 158, 158);
+} */
+::placeholder {
+    color: white;
+}
+  
