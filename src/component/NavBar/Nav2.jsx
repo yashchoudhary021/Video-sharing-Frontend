@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import "./nav.css";
 
 function Nav2() {
@@ -55,13 +56,13 @@ function Nav2() {
   return (<>
     <nav>
       <div className="Container">
-        <span className="heading" onClick={()=>navigation("/")}>Tuner</span>
+        <span id="Nav2-heading" onClick={() => navigation("/")}>Tuner</span>
         <input placeholder="Search" className="input" type="text" />
-        <button className="btn-3 com-btn" onClick={handelSignOut}>Sign out</button>
+        <Link className="btn-11 com-btn">My Videos</Link>
         <span className="com-btn">|</span>
-        <button className="btn-2 com-btn">Upload</button>
+        <Link to="/myvideos" className="btn-2 com-btn" onClick={() => setShow(true)}>Upload</Link>
         <span className="com-btn">|</span>
-        <button className="btn-11 com-btn">My Videos</button>
+        <Link className="btn-3 com-btn" style={{color: "red"}} onClick={handelSignOut}>Sign out</Link>
       </div>
     </nav>
     {show && <div>
@@ -82,9 +83,9 @@ function Nav2() {
                 <label htmlFor="">Catergory</label><br />
                 <select value={catergory} onChange={handleChange} id="Catergory">
                   <option >Catergory</option>
-                  <option value="0">Video</option>
-                  <option value="1">Picture</option>
-                  <option value="2">Music</option>
+                  <option value="0">Sci-Fi</option>
+                  <option value="1">Action</option>
+                  <option value="2">Drama</option>
                 </select>
               </div>
               <div className="div-container">
