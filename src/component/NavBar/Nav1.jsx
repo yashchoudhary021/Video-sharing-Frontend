@@ -6,7 +6,7 @@ function Nav1() {
   return (<>
     <nav>
       <div className="Container">
-        <span className="heading" onClick={()=>navigate("/")}>Tuner</span>
+        <span id="Nav1-heading" onClick={()=>navigate("/")}>Tuner</span>
         <input placeholder="Search" className="input" type="text" />
         <div className="com-btn">
           <Link to="/sign" className="btn-2 com-btn" >Login </Link> 
