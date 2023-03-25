@@ -83,9 +83,9 @@ function Nav2() {
                 <label htmlFor="">Catergory</label><br />
                 <select value={catergory} onChange={handleChange} id="Catergory">
                   <option >Catergory</option>
-                  <option value="0">Video</option>
-                  <option value="1">Picture</option>
-                  <option value="2">Music</option>
+                  <option value="0">Sci-Fi</option>
+                  <option value="1">Action</option>
+                  <option value="2">Drama</option>
                 </select>
               </div>
               <div className="div-container">
