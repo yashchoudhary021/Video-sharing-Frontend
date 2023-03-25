@@ -3,7 +3,7 @@ import Nav2 from './Nav2';
 import Nav1 from './Nav1';
 
 const NavBar = () => {
-    const [val, setVal] = useState(true);
+    const [val, setVal] = useState(false);
     useEffect(()=>{
         if (localStorage.getItem("loginToken")) {
             setVal(true)
