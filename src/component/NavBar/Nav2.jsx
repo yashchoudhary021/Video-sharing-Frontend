@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./nav.css";
 
 function Nav2() {
@@ -19,13 +19,14 @@ function Nav2() {
   return (<>
     <nav>
       <div className="Container">
-        <span className="heading" onClick={()=>navigation("/")}>Tuner</span>
+        <span id="Nav2-heading" onClick={()=>navigation("/")}>Tuner</span>
         <input placeholder="Search" className="input" type="text" />
-        <button className="btn-3 com-btn" onClick={handelSignOut}>Sign out</button>
+        <Link className="com-btn">My Videos</Link>
         <span className="com-btn">|</span>
-        <button className="btn-2 com-btn">Upload</button>
+        <Link className="com-btn">Upload</Link>
         <span className="com-btn">|</span>
-        <button className="btn-11 com-btn">My Videos</button>
+        <Link className="com-btn" onClick={handelSignOut} style={{color:"red"}}>Sign out</Link>
+
       </div>
     </nav>
   </>);
