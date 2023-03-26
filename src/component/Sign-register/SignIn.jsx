@@ -27,7 +27,7 @@ function SignIn() {
     }
     return (<>
             <NavBar/>
-        <main>
+        <main id="sr_main">
             <Poster />
             <section className="sec-second">
                 <form onSubmit={handelSubmit}>
