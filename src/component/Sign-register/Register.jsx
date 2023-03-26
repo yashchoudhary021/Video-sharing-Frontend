@@ -45,12 +45,12 @@ function Register() {
 
     return (<>
         <NavBar />
-        <main>
+        <main className="sr_main">
             <Poster />
-            <section className="sec-second register">
-                <form onSubmit={handleSubmit}>
-                    <h1>Register</h1>
-                    <div>Register to continue access pages</div>
+            <section className="register">
+                <h1 id='register_heading'>Register</h1>
+                <div style={{ margin: "3%" }}>Register to continue access pages</div>
+                <form onSubmit={handleSubmit} id="register_form">
                     <input type="file" name='photo' onChange={(e) => SetPhoto(e.target.files[0])} /><br />
                     {/* <button id='btn-circle'>+</button><br /> */}
                     <input type="text" placeholder="Name" name='name' onChange={(e) => { SetName(e.target.value) }} value={name} /><br />
@@ -59,7 +59,7 @@ function Register() {
                     <input type="text" placeholder="Profession" name='profession' onChange={(e) => { SetProfession(e.target.value) }} value={profession} /><br />
                     <input type="password" placeholder="Password" name='password' onChange={(e) => { SetPassword(e.target.value) }} value={password} /><br />
                     <input type="password" placeholder="Confirm Password" name='confirmPassword' onChange={(e) => { SetConfirmPassword(e.target.value) }} value={confirmPassword} /><br />
-                    <button type="submit">Register</button><br />
+                    <button id="register_btn" type="submit">Register</button><br />
                 </form>
             </section>
         </main>

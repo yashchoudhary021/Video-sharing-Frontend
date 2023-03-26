@@ -5,16 +5,16 @@ const Poster = () => {
     const location = useLocation()
     return (
         <>
-            <section className="sec-first">
+            <section className="poster">
                 <h1>Tuner</h1>
                 <div>Enjoy Multiple videos at one place</div>
                 {location.pathname === "/register" ?
                     <Link to="/sign">
-                        <button>Sign In</button>
+                        <p style={{color:"white" ,  fontSize:"1.9rem" ,marginTop:"30%" , marginLeft:"5%"}}>Sign In</p>
                     </Link>
                     :
                     <Link to="/register">
-                        <button>Register</button>
+                        <p style={{color:"white",  fontSize:"1.9rem" ,marginTop:"30%" , marginLeft:"5%"}}>Register</p>
                     </Link>
                 }
             </section>
