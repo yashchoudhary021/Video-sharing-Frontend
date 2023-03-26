@@ -17,12 +17,14 @@
     font-weight: 500;
     color: #80accf;
     text-decoration: none;
+    cursor: pointer;
 }
 #Nav1-heading {
     font-size: 2rem;
     font-weight: 500;
     color: #80accf;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .input {
