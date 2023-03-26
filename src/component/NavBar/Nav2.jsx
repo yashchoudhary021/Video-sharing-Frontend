@@ -7,9 +7,7 @@ function Nav2() {
 
   // For Upload Modal
   const [show, setShow] = useState(false);
-  const [privacy, setPrivacy] = useState(0);
-  const [catergory, setCatergory] = useState("Catergory")
-  const [description, setDescription] = useState('')
+
   const [file, setFile] = useState();
   const [name,setName] = useState();
   const [description, setDescription] = useState('');
@@ -17,25 +15,26 @@ function Nav2() {
   const [privacy, setPrivacy] = useState("Public");
 
 
-  const handleChange = (e) => {
-    setCatergory(e.target.value)
-  }
-  const handleChangePrivacy = (e) => {
-    setPrivacy(e.target.value)
-  }
-  const handleDescription = (e) => {
-    setDescription(e.target.value)
-  }
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log(file)
-    console.log(description)
-    console.log(privacy)
-    console.log(catergory)
-    // axios.post("http://localhost:8080/uploadfiles")
-    setDescription("")
-    setCatergory('')
-    setPrivacy('')
+    const fromData = new FormData();
+    const token = localStorage.getItem("loginToken");
+    console.log(token);
+    console.log(file);
+    console.log(name,description,catergory,privacy);
+    fromData.append("token",token);
+    fromData.append("video",file);
+    fromData.append("name",name);
+    fromData.append("description",description);
+    fromData.append("category",catergory);
+    fromData.append("visibility",privacy);
+    // console.log(fromData);
+    axios.put("http://localhost:8080/myvideos",fromData,{
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
+      }}).then((res)=>{console.log(res)})
+    .catch((err)=>{console.log(err)})
     setShow(false)
   }
 
@@ -75,26 +74,32 @@ function Nav2() {
               <h3>Upload New Video</h3>
               <button id="cross_btn" onClick={() => setShow(false)}>+</button>
             </div>
-            <input type="file" name="video-file" id="video-file" onChange={handleFile} />
-            <h1>Name</h1>
-            <textarea name="description" value={description} onChange={handleDescription} placeholder="Description" id="description" cols="30" rows="10"></textarea>
+
+            <input type="file" name="video" id="video-file" onChange={(e)=>{setFile(e.target.files[0])}} />
+
+            <h1 id="name-heading">Name</h1>
+            <input type="text" name="name" id="name-input-feild"  value={name} onChange={(e)=>setName(e.target.value)}/>
+
+            <h1>Description</h1>
+            <textarea name="description" value={description} onChange={(e)=>{setDescription(e.target.value)}} placeholder="Description" id="description" cols="30" rows="10" ></textarea>
 
             <div className="upload_category_div">
               <div className="div-container" id="first-div">
-                <label htmlFor="">Catergory</label><br />
-                <select value={catergory} onChange={handleChange} id="Catergory">
-                  <option >Catergory</option>
-                  <option value="0">Sci-Fi</option>
-                  <option value="1">Action</option>
-                  <option value="2">Drama</option>
+                <label htmlFor="category">Catergory</label><br />
+                <select name="category" value={catergory} onChange={(e)=>{setCatergory(e.target.value)}} id="Catergory">
+                  <label> Catergory </label>
+                  <option value="Sci-Fi">Sci-Fi</option>
+                  <option value="Action">Action</option>
+                  <option value="Drama">Drama</option>
                 </select>
               </div>
 
               <div className="div-container">
-                <label htmlFor="">Visibility</label><br />
-                <select id="Public" value={privacy} onChange={handleChangePrivacy}>
-                  <option value="0">Public</option>
-                  <option value="1">Private</option>
+              <label htmlFor="visibility">Visibility</label><br />
+                <select name='visibility' id="Public" value={privacy} onChange={(e)=>{setPrivacy(e.target.value)}}>
+                <label>Visibility</label><br />
+                  <option value="Public">Public</option>
+                  <option value="Private">Private</option>
                 </select>
               </div>
             </div>
