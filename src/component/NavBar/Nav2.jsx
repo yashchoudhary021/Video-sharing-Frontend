@@ -9,32 +9,37 @@ function Nav2() {
   const [show, setShow] = useState(false);
 
   const [file, setFile] = useState();
-  const [name,setName] = useState();
+  const [name, setName] = useState();
   const [description, setDescription] = useState('');
   const [catergory, setCatergory] = useState("Sci-Fi");
   const [privacy, setPrivacy] = useState("Public");
 
 
+  //Uploading Video
   const onSubmit = (e) => {
     e.preventDefault()
     const fromData = new FormData();
     const token = localStorage.getItem("loginToken");
-    console.log(token);
-    console.log(file);
-    console.log(name,description,catergory,privacy);
-    fromData.append("token",token);
-    fromData.append("video",file);
-    fromData.append("name",name);
-    fromData.append("description",description);
-    fromData.append("category",catergory);
-    fromData.append("visibility",privacy);
-    // console.log(fromData);
-    axios.put("http://localhost:8080/myvideos",fromData,{
+    // console.log(token);
+    // console.log(file);
+    // console.log(name, description, catergory, privacy);
+    fromData.append("token", token);
+    fromData.append("video", file);
+    fromData.append("name", name);
+    fromData.append("description", description);
+    fromData.append("category", catergory);
+    fromData.append("visibility", privacy);
+
+    axios.put("http://localhost:8080/myvideos", fromData, {
       headers: {
         'Content-Type': 'multipart/form-data',
         'Authorization': `Bearer ${token}`
-      }}).then((res)=>{console.log(res)})
-    .catch((err)=>{console.log(err)})
+      }
+    }).then((res) => {
+      if (res.status === 200) {
+        window.alert(res.data.message)
+      }
+    }).catch((err) => { console.log(err) })
     setShow(false)
   }
 
@@ -62,7 +67,7 @@ function Nav2() {
         <span className="com-btn">|</span>
         <Link to="/myvideos" className="btn-2 com-btn" onClick={() => setShow(true)}>Upload</Link>
         <span className="com-btn">|</span>
-        <Link className="btn-3 com-btn" style={{color: "red"}} onClick={handelSignOut}>Sign out</Link>
+        <Link className="btn-3 com-btn" style={{ color: "red" }} onClick={handelSignOut}>Sign out</Link>
       </div>
     </nav>
     {show && <div>
@@ -75,18 +80,18 @@ function Nav2() {
               <button id="cross_btn" onClick={() => setShow(false)}>+</button>
             </div>
 
-            <input type="file" name="video" id="video-file" onChange={(e)=>{setFile(e.target.files[0])}} />
+            <input type="file" name="video" id="video-file" onChange={(e) => { setFile(e.target.files[0]) }} />
 
-            <label style={{color:"white"}}>Name</label>
-            <input type="text" name="name" id="name" value={name} onChange={(e)=>setName(e.target.value)}/>
+            <label style={{ color: "white" }}>Name</label>
+            <input type="text" name="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
 
             <h1>Description</h1>
-            <textarea name="description" value={description} onChange={(e)=>{setDescription(e.target.value)}} placeholder="Description" id="description" cols="30" rows="10" ></textarea>
+            <textarea name="description" value={description} onChange={(e) => { setDescription(e.target.value) }} placeholder="Description" id="description" cols="30" rows="10" ></textarea>
 
             <div className="upload_category_div">
               <div className="div-container" id="first-div">
                 <label htmlFor="category">Catergory</label><br />
-                <select name="category" value={catergory} onChange={(e)=>{setCatergory(e.target.value)}} id="Catergory">
+                <select name="category" value={catergory} onChange={(e) => { setCatergory(e.target.value) }} id="Catergory">
                   <label> Catergory </label>
                   <option value="Sci-Fi">Sci-Fi</option>
                   <option value="Action">Action</option>
@@ -95,9 +100,9 @@ function Nav2() {
               </div>
 
               <div className="div-container">
-              <label htmlFor="visibility">Visibility</label><br />
-                <select name='visibility' id="Public" value={privacy} onChange={(e)=>{setPrivacy(e.target.value)}}>
-                <label>Visibility</label><br />
+                <label htmlFor="visibility">Visibility</label><br />
+                <select name='visibility' id="Public" value={privacy} onChange={(e) => { setPrivacy(e.target.value) }}>
+                  <label>Visibility</label><br />
                   <option value="Public">Public</option>
                   <option value="Private">Private</option>
                 </select>
