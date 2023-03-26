@@ -8,10 +8,14 @@ function Nav2() {
   // For Upload Modal
   const [show, setShow] = useState(false);
   const [privacy, setPrivacy] = useState(0);
-  const [name, setName] = useState();
   const [catergory, setCatergory] = useState("Catergory")
   const [description, setDescription] = useState('')
   const [file, setFile] = useState();
+  const [name,setName] = useState();
+  const [description, setDescription] = useState('');
+  const [catergory, setCatergory] = useState("Sci-Fi");
+  const [privacy, setPrivacy] = useState("Public");
+
 
   const handleChange = (e) => {
     setCatergory(e.target.value)
@@ -22,36 +26,20 @@ function Nav2() {
   const handleDescription = (e) => {
     setDescription(e.target.value)
   }
-
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault()
-    try{
-      const formData = new FormData();
-      formData.append("video", file);
-      formData.append("Name", name);
-      formData.append("privacy", privacy);
-      formData.append("catergory", catergory);
-      formData.append("description", description);
-      // console.log({file: file}, {name: name}, {description: description}, {catergory: catergory}, {privacy: privacy})
-      // console.log(formData)
-      const res = await axios.post("http://localhost:8080/upload", formData);
-      console.log(res.data);
-      setDescription("")
-      setName("")
-      setFile(null)
-      setPrivacy("")
-      setCatergory("")
-    } catch(error) {
-      console.log(error);
-    }
-  }
-  const handleFile = (e) => {
-    // console.log(e.target.files[0])
-    setFile(e.target.files[0])
+    console.log(file)
+    console.log(description)
+    console.log(privacy)
+    console.log(catergory)
+    // axios.post("http://localhost:8080/uploadfiles")
+    setDescription("")
+    setCatergory('')
+    setPrivacy('')
+    setShow(false)
   }
 
   // For Sending token to backend
-
   const navigation = useNavigate()
   const handelSignOut = () => {
     const token = localStorage.getItem("loginToken");
@@ -65,6 +53,7 @@ function Nav2() {
       // window.alert("try later")
     })
   }
+
   return (<>
     <nav>
       <div className="Container">
@@ -82,34 +71,36 @@ function Nav2() {
       <section className="Container-Section">
         <div>
           <form onSubmit={onSubmit}>
-            <div id="heading">
+            <div id="upload_heading">
               <h3>Upload New Video</h3>
-              <button onClick={() => setShow(false)}>+</button>
+              <button id="cross_btn" onClick={() => setShow(false)}>+</button>
             </div>
             <input type="file" name="video-file" id="video-file" onChange={handleFile} />
-            <h1 id="name-heading">Name</h1>
-            <input id="name-input-feild" value={name} onChange={(e) => setName(e.target.value)} placeholder='name' type="text" />
+            <h1>Name</h1>
             <textarea name="description" value={description} onChange={handleDescription} placeholder="Description" id="description" cols="30" rows="10"></textarea>
 
-            <div className="main-div">
+            <div className="upload_category_div">
               <div className="div-container" id="first-div">
                 <label htmlFor="">Catergory</label><br />
                 <select value={catergory} onChange={handleChange} id="Catergory">
                   <option >Catergory</option>
-                  <option value="sci-fi">Sci-Fi</option>
-                  <option value="action">Action</option>
-                  <option value="drama">Drama</option>
+                  <option value="0">Sci-Fi</option>
+                  <option value="1">Action</option>
+                  <option value="2">Drama</option>
                 </select>
               </div>
+
               <div className="div-container">
                 <label htmlFor="">Visibility</label><br />
                 <select id="Public" value={privacy} onChange={handleChangePrivacy}>
-                  <option value="public" selected>Public</option>
-                  <option value="private">Private</option>
+                  <option value="0">Public</option>
+                  <option value="1">Private</option>
                 </select>
               </div>
             </div>
-            <button id="button-save" onSubmit={onSubmit}>Save</button>
+
+            <button id="button-save" >Save</button>
+
           </form>
         </div>
       </section>
