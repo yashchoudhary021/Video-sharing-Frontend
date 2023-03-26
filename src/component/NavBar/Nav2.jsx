@@ -8,6 +8,7 @@ function Nav2() {
   // For Upload Modal
   const [show, setShow] = useState(false);
   const [privacy, setPrivacy] = useState(0);
+  const [name, setName] = useState();
   const [catergory, setCatergory] = useState("Catergory")
   const [description, setDescription] = useState('')
   const [file, setFile] = useState();
@@ -21,17 +22,28 @@ function Nav2() {
   const handleDescription = (e) => {
     setDescription(e.target.value)
   }
-  const onSubmit = (e) => {
+
+  const onSubmit = async (e) => {
     e.preventDefault()
-    console.log(file)
-    console.log(description)
-    console.log(privacy)
-    console.log(catergory)
-    // axios.post("http://localhost:8080/uploadfiles")
-    setDescription("")
-    setCatergory('')
-    setPrivacy('')
-    setShow(false)
+    try{
+      const formData = new FormData();
+      formData.append("video", file);
+      formData.append("Name", name);
+      formData.append("privacy", privacy);
+      formData.append("catergory", catergory);
+      formData.append("description", description);
+      // console.log({file: file}, {name: name}, {description: description}, {catergory: catergory}, {privacy: privacy})
+      // console.log(formData)
+      const res = await axios.post("http://localhost:8080/upload", formData);
+      console.log(res.data);
+      setDescription("")
+      setName("")
+      setFile(null)
+      setPrivacy("")
+      setCatergory("")
+    } catch(error) {
+      console.log(error);
+    }
   }
   const handleFile = (e) => {
     // console.log(e.target.files[0])
@@ -75,7 +87,8 @@ function Nav2() {
               <button onClick={() => setShow(false)}>+</button>
             </div>
             <input type="file" name="video-file" id="video-file" onChange={handleFile} />
-            <h1>Name</h1>
+            <h1 id="name-heading">Name</h1>
+            <input id="name-input-feild" value={name} onChange={(e) => setName(e.target.value)} placeholder='name' type="text" />
             <textarea name="description" value={description} onChange={handleDescription} placeholder="Description" id="description" cols="30" rows="10"></textarea>
 
             <div className="main-div">
@@ -83,16 +96,16 @@ function Nav2() {
                 <label htmlFor="">Catergory</label><br />
                 <select value={catergory} onChange={handleChange} id="Catergory">
                   <option >Catergory</option>
-                  <option value="0">Sci-Fi</option>
-                  <option value="1">Action</option>
-                  <option value="2">Drama</option>
+                  <option value="sci-fi">Sci-Fi</option>
+                  <option value="action">Action</option>
+                  <option value="drama">Drama</option>
                 </select>
               </div>
               <div className="div-container">
                 <label htmlFor="">Visibility</label><br />
                 <select id="Public" value={privacy} onChange={handleChangePrivacy}>
-                  <option value="0">Public</option>
-                  <option value="1">Private</option>
+                  <option value="public" selected>Public</option>
+                  <option value="private">Private</option>
                 </select>
               </div>
             </div>
