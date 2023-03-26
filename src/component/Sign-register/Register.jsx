@@ -45,7 +45,7 @@ function Register() {
 
     return (<>
         <NavBar />
-        <main id="sr_main">
+        <main className="sr_main">
             <Poster />
             <section className="register">
                 <h1 id='register_heading'>Register</h1>

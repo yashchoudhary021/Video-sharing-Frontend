@@ -27,15 +27,15 @@ function SignIn() {
     }
     return (<>
             <NavBar/>
-        <main id="sr_main">
+        <main className="sr_main">
             <Poster />
-            <section className="sec-second">
+            <section className="signin">
                 <form onSubmit={handelSubmit}>
-                    <h1>Sing In</h1>
-                    <div>Sing in to continue access pages</div><br />
+                    <h1 style={{margin:"8%" ,fontSize:"5rem"}}>Sing In</h1>
+                    <div style={{ margin: "3%" , fontSize:"3rem" }}>Sing in to continue access pages</div><br />
                     <input type="text" placeholder="username" name='username' onChange={(e) => { SetUsername(e.target.value) }} value={username} /><br />
                     <input type="password" placeholder="Password" name='password' onChange={(e) => { SetPassword(e.target.value) }} value={Password} /><br />
-                    <button type="submit">Sing in</button>
+                    <button id="signin_btn" type="submit">Sing in</button>
                 </form>
             </section>
         </main>
