@@ -30,7 +30,7 @@ function Nav2() {
     fromData.append("category", catergory);
     fromData.append("visibility", privacy);
 
-    axios.put("http://localhost:8080/myvideos", fromData, {
+    axios.put("https://tuner.onrender.com/myvideos", fromData, {
       headers: {
         'Content-Type': 'multipart/form-data',
         'Authorization': `Bearer ${token}`
@@ -48,7 +48,7 @@ function Nav2() {
   const handelSignOut = () => {
     const token = localStorage.getItem("loginToken");
     // console.log(token);
-    axios.post("http://localhost:8080/logout", { token: token }).then((res) => {
+    axios.post("https://tuner.onrender.com/logout", { token: token }).then((res) => {
       window.alert(res.data.msg);
       navigation("/sign")
       localStorage.clear("loginToken");
@@ -63,7 +63,7 @@ function Nav2() {
       <div className="Container">
         <span id="Nav2-heading" onClick={() => navigation("/")}>Tuner</span>
         <input placeholder="Search" className="input" type="text" />
-        <Link className="btn-11 com-btn">My Videos</Link>
+        <Link to="/myvideos" className="btn-11 com-btn">My Videos</Link>
         <span className="com-btn">|</span>
         <Link to="/myvideos" className="btn-2 com-btn" onClick={() => setShow(true)}>Upload</Link>
         <span className="com-btn">|</span>

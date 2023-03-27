@@ -28,7 +28,7 @@ function Register() {
             formData.append('password', password);
             formData.append('confirmPassword', confirmPassword);
             console.log(formData)
-            await axios.post("http://localhost:8080/register", formData)
+            await axios.post("https://tuner.onrender.com/register", formData)
                 .then((res) => {
                     console.log(res);
                     window.alert("Your Registration is Sucessfull");
