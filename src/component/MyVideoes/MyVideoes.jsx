@@ -1,12 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../NavBar/NavBar'
-
+import axios from 'axios'
 const MyVideoes = () => {
+  const [data, setData] = useState([])
+  const [user, setUser] = useState([]);
+  const token = localStorage.getItem("loginToken");
+  // console.log(token)
+  useEffect(() => {
+    axios.post("https://tuner.onrender.com/myvideos", { token: token })
+      .then((res) => {
+        // console.log(res.data.data[0].video.vfile)
+        // console.log(res.data.userDp)
+        console.log(res.data.data)
+        setUser(res.data)
+        setData(res.data.data)
+      }).catch((err) => {
+        console.log(err)
+      })
+  }, [token])
   return (
     <>
-      <NavBar/>
+      <NavBar />
+      <div>
+        <img src={user.userDp} alt={user.userName} style={{ borderRadius: "50%" }} height="50px" width="50px" />
+        <p>{user.userName}</p>
+      </div>
+      {data.map((sData, i) => {
+        return (
+          <div key={i}>
+            <video src={sData.video.vfile} height="300px" width="300px" controls></video>
+            <p>{sData.video.name}</p>
+          </div>
+        )
+      })}
     </>
   )
 }
-
 export default MyVideoes;
+
+
+
+
+
+
+
