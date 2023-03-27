@@ -85,7 +85,6 @@ function Nav2() {
             <label style={{ color: "white" }}>Name</label>
             <input type="text" name="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
 
-            <h1>Description</h1>
             <textarea name="description" value={description} onChange={(e) => { setDescription(e.target.value) }} placeholder="Description" id="description" cols="30" rows="10" ></textarea>
 
             <div className="upload_category_div">

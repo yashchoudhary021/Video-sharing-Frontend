@@ -1,0 +1,14 @@
+.myvideo-video {
+    display: inline-block;
+    text-align: center;
+    margin: 20px;
+}
+
+.myvideo-video video {
+    display: block;
+    margin: 0 auto;
+}
+
+.myvideo-video p {
+    margin-bottom: 5px;
+}

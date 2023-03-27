@@ -1,0 +1,123 @@
+.main-div {
+    width: 100vw;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.container {
+    background-image: url('../../Assets/1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    background-color: rgb(19, 19, 51);
+    color: white;
+    background-repeat: no-repeat;
+    /* margin-bottom: 200px; */
+    min-width: 100vw;
+    height: 70vh;
+}
+
+.container div {
+    font-size: 47px;
+    margin-left: 50px;
+    font-weight: 700;
+}
+
+.first {
+    margin-top: 150px;
+}
+
+.container ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.container li {
+    margin-left: 15px;
+    color: #CCCCCC;
+}
+
+#FisrtPublisher {
+    margin: 20px 50px;
+}
+
+.ad2-container {
+    background-image: url('../../Assets/1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    background-color: rgb(19, 19, 51);
+    color: white;
+    background-repeat: no-repeat;
+    background-size: 100vw 80vh;
+    /* margin-bottom: 200px; */
+    min-width: 100vw;
+    height: 35vh;
+}
+
+.ad2-container div {
+    font-size: 47px;
+    margin-left: 50px;
+    font-weight: 700;
+}
+
+.second {
+    margin-top: 15px;
+}
+
+.ad2-container ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.ad2-container li {
+    margin-left: 15px;
+    color: #CCCCCC;
+}
+
+#secondpublisher {
+    float: right;
+    font-weight: 500;
+    /* color: red; */
+    margin-top: -50px;
+}
+
+.btn-container {
+    /* position: absolute; */
+    right: 0;
+    bottom: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+#view-btn {
+    position: absolute;
+    bottom: 0;
+    /* top: 50; */
+    right: 0;
+    margin: 0px;
+    width: 80px;
+    color: purple;
+    background-color: rgb(19, 19, 37);
+    cursor: pointer;
+    border: 0;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+body {
+    background-color: rgb(19, 19, 37);
+    color: white;
+}
+
+
+/* CARD CSS */
+
+.card-video {
+    display: inline-block;
+    margin:40% 2% 2% 2%;
+    vertical-align: top;
+}
