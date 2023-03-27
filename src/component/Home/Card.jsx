@@ -12,14 +12,16 @@ const Card = () => {
       })
   }, [])
   return (
-    <div>
-      {item.map((res,i) => {
-        return <>
-          <div key={i} className="card-video">
-            <video src={res.video.vfile} height="200px" width="300px" controls></video>
-            <p>{res.video.name} [{res.video.category}]</p>
-          </div>
-        </>
+    <div id="card-video-wrapper">
+      {item.map((res, i) => {
+        return (
+          <>
+            <div key={i} className="card-video" >
+              <video src={res.video.vfile} height="200px" width="300px" controls></video>
+              <p>{res.video.name} [{res.video.category}]</p>
+            </div>
+          </>
+        )
       })}
     </div>
   )

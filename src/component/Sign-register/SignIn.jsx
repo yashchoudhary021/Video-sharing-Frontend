@@ -3,7 +3,7 @@ import Poster from './Poster';
 import axios from 'axios';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar';
+// import NavBar from '../NavBar/NavBar';
 
 function SignIn() {
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ function SignIn() {
             })
     }
     return (<>
-            <NavBar/>
+            {/* <NavBar/> */}
         <main className="sr_main">
             <Poster />
             <section className="signin">

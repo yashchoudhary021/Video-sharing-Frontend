@@ -116,8 +116,11 @@ body {
 
 /* CARD CSS */
 
+#card-video-wrapper{
+    margin:40% 2% 2% 2%;
+}
 .card-video {
     display: inline-block;
-    margin:40% 2% 2% 2%;
+    margin:2%;
     vertical-align: top;
 }

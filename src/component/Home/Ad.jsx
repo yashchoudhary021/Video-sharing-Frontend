@@ -6,7 +6,6 @@ const Ad = () => {
 
   const [height,setHeight]= useState("40%");
 
-  // const [Video,setVideo] =useState(false)
   const Handlebtn = () => {
     if (!val) {
       setVal(true)

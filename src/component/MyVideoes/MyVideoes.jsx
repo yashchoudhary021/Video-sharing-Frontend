@@ -24,18 +24,20 @@ const MyVideoes = () => {
     <>
       <NavBar />
       <div>
-        <img src={user.userDp} alt={user.userName} style={{ borderRadius: "50%" ,display:"block" ,margin:"auto", marginTop:"5%"}} height="80px" width="80px" />
+        <img src={user.userDp} alt={user.userName} style={{ borderRadius: "50%", display: "block", margin: "auto", marginTop: "5%" }} height="80px" width="80px" />
         <br />
-        <p style={{textAlign:"center"}} >{user.userName}</p>
+        <p style={{ textAlign: "center" }} >{user.userName}</p>
       </div>
-      {data.map((sData, i) => {
-        return (
-          <div key={i} class="myvideo-video">
-            <video src={sData.video.vfile} height="300px" width="300px" controls ></video>
-            <p>{sData.video.name} &nbsp;&nbsp;&nbsp; [{sData.video.visibility}]</p>
-          </div>
-        )
-      })}
+      <div>
+        {data.map((sData, i) => {
+          return (
+            <div key={i} class="myvideo-video">
+              <video src={sData.video.vfile} height="300px" width="300px" controls ></video>
+              <p>{sData.video.name} &nbsp;&nbsp;&nbsp; [{sData.video.visibility}]</p>
+            </div>
+          )
+        })}
+      </div>
     </>
   )
 }
