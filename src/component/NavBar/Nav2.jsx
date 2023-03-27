@@ -7,39 +7,43 @@ function Nav2() {
 
   // For Upload Modal
   const [show, setShow] = useState(false);
-  const [privacy, setPrivacy] = useState(0);
-  const [catergory, setCatergory] = useState("Catergory")
-  const [description, setDescription] = useState('')
-  const [file, setFile] = useState();
 
-  const handleChange = (e) => {
-    setCatergory(e.target.value)
-  }
-  const handleChangePrivacy = (e) => {
-    setPrivacy(e.target.value)
-  }
-  const handleDescription = (e) => {
-    setDescription(e.target.value)
-  }
+  const [file, setFile] = useState();
+  const [name, setName] = useState();
+  const [description, setDescription] = useState('');
+  const [catergory, setCatergory] = useState("Sci-Fi");
+  const [privacy, setPrivacy] = useState("Public");
+
+
+  //Uploading Video
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log(file)
-    console.log(description)
-    console.log(privacy)
-    console.log(catergory)
-    // axios.post("http://localhost:8080/uploadfiles")
-    setDescription("")
-    setCatergory('')
-    setPrivacy('')
+    const fromData = new FormData();
+    const token = localStorage.getItem("loginToken");
+    // console.log(token);
+    // console.log(file);
+    // console.log(name, description, catergory, privacy);
+    fromData.append("token", token);
+    fromData.append("video", file);
+    fromData.append("name", name);
+    fromData.append("description", description);
+    fromData.append("category", catergory);
+    fromData.append("visibility", privacy);
+
+    axios.put("http://localhost:8080/myvideos", fromData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
+      }
+    }).then((res) => {
+      if (res.status === 200) {
+        window.alert(res.data.message)
+      }
+    }).catch((err) => { console.log(err) })
     setShow(false)
-  }
-  const handleFile = (e) => {
-    // console.log(e.target.files[0])
-    setFile(e.target.files[0])
   }
 
   // For Sending token to backend
-
   const navigation = useNavigate()
   const handelSignOut = () => {
     const token = localStorage.getItem("loginToken");
@@ -53,6 +57,7 @@ function Nav2() {
       // window.alert("try later")
     })
   }
+
   return (<>
     <nav>
       <div className="Container">
@@ -62,7 +67,7 @@ function Nav2() {
         <span className="com-btn">|</span>
         <Link to="/myvideos" className="btn-2 com-btn" onClick={() => setShow(true)}>Upload</Link>
         <span className="com-btn">|</span>
-        <Link className="btn-3 com-btn" style={{color: "red"}} onClick={handelSignOut}>Sign out</Link>
+        <Link className="btn-3 com-btn" style={{ color: "red" }} onClick={handelSignOut}>Sign out</Link>
       </div>
     </nav>
     {show && <div>
@@ -70,33 +75,42 @@ function Nav2() {
       <section className="Container-Section">
         <div>
           <form onSubmit={onSubmit}>
-            <div id="heading">
+            <div id="upload_heading">
               <h3>Upload New Video</h3>
-              <button onClick={() => setShow(false)}>+</button>
+              <button id="cross_btn" onClick={() => setShow(false)}>+</button>
             </div>
-            <input type="file" name="video-file" id="video-file" onChange={handleFile} />
-            <h1>Name</h1>
-            <textarea name="description" value={description} onChange={handleDescription} placeholder="Description" id="description" cols="30" rows="10"></textarea>
 
-            <div className="main-div">
+            <input type="file" name="video" id="video-file" onChange={(e) => { setFile(e.target.files[0]) }} />
+
+            <label style={{ color: "white" }}>Name</label>
+            <input type="text" name="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+
+            <h1>Description</h1>
+            <textarea name="description" value={description} onChange={(e) => { setDescription(e.target.value) }} placeholder="Description" id="description" cols="30" rows="10" ></textarea>
+
+            <div className="upload_category_div">
               <div className="div-container" id="first-div">
-                <label htmlFor="">Catergory</label><br />
-                <select value={catergory} onChange={handleChange} id="Catergory">
-                  <option >Catergory</option>
-                  <option value="0">Sci-Fi</option>
-                  <option value="1">Action</option>
-                  <option value="2">Drama</option>
+                <label htmlFor="category">Catergory</label><br />
+                <select name="category" value={catergory} onChange={(e) => { setCatergory(e.target.value) }} id="Catergory">
+                  <label> Catergory </label>
+                  <option value="Sci-Fi">Sci-Fi</option>
+                  <option value="Action">Action</option>
+                  <option value="Drama">Drama</option>
                 </select>
               </div>
+
               <div className="div-container">
-                <label htmlFor="">Visibility</label><br />
-                <select id="Public" value={privacy} onChange={handleChangePrivacy}>
-                  <option value="0">Public</option>
-                  <option value="1">Private</option>
+                <label htmlFor="visibility">Visibility</label><br />
+                <select name='visibility' id="Public" value={privacy} onChange={(e) => { setPrivacy(e.target.value) }}>
+                  <label>Visibility</label><br />
+                  <option value="Public">Public</option>
+                  <option value="Private">Private</option>
                 </select>
               </div>
             </div>
-            <button id="button-save" onSubmit={onSubmit}>Save</button>
+
+            <button id="button-save" >Save</button>
+
           </form>
         </div>
       </section>

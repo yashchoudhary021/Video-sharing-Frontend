@@ -17,12 +17,14 @@
     font-weight: 500;
     color: #80accf;
     text-decoration: none;
+    cursor: pointer;
 }
 #Nav1-heading {
     font-size: 2rem;
     font-weight: 500;
     color: #80accf;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .input {
@@ -80,14 +82,16 @@
     transform: translate(-50%, -50%);
 }
 
-#heading {
+#upload_heading {
     display: flex;
     color: white;
+    margin-bottom: 1%;
 }
 
-#heading button {
+#cross_btn {
     cursor: pointer;
-    margin-left: 369px;
+    margin-left: 80%;
+    margin-bottom: 1%;
     padding: 2px 3px;
     font-size: 30px;
     background-color: black;
@@ -113,18 +117,18 @@
     border-right: 0;
 }
 
-.main-div {
+.upload_category_div {
     margin-top: 30px;
     display: flex;
     margin-bottom: 20px;
 }
 
-.main-div label {
+.upload_category_div label {
     color: gray;
     font-size: 14px;
 }
 
-.main-div select {
+.upload_category_div select {
     background-color: black;
     color: white;
     font-size: 17px;
@@ -154,4 +158,14 @@
     height: 2.4rem;
     width: 8rem;
     margin-left: 35%;
+}
+#name{
+    margin-top: 1%;
+    margin-left: 1%;
+    background-color: black;
+    border-left: 0 ;
+    border-right: 0;
+    border-top: 0;
+    /* border-bottom: 1px; */
+    color: white;
 }
