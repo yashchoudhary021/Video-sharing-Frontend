@@ -101,10 +101,10 @@ function Nav2() {
 
             <input type="file" name="video" id="video-file" onChange={(e) => { setFile(e.target.files[0]) }} />
 
-            <label style={{ color: "white" }}>Name</label>
+            <label style={{ color: "white"}}>Name</label>
             <input type="text" name="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
 
-            <textarea name="description" value={description} onChange={(e) => { setDescription(e.target.value) }} placeholder="Description" id="description" cols="30" rows="10" ></textarea>
+            <textarea name="description" value={description} onChange={(e) => { setDescription(e.target.value) }} placeholder="Description" id="description" cols="30" rows="10" style={{marginTop:"20px"}}></textarea>
 
             <div className="upload_category_div">
               <div className="div-container" id="first-div">

@@ -7,10 +7,8 @@ const Home = () => {
     return (
         <>
             <NavBar />
-        {/* <div style={{display:"flex", flexDirection:"column"}}> */}
             <Ad />
             <Card />
-        {/* </div> */}
         </>
     )
 }

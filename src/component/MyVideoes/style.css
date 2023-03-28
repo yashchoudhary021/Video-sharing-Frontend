@@ -1,12 +1,25 @@
+#myvideo-wrapper-div{
+    padding-right: 20%;
+}
+
 .myvideo-video {
     display: inline-block;
     text-align: center;
-    margin: 1% 2% 1% 2.7%;
+    margin: 1% ;
 }
 
-.myvideo-video video {
+/* .myvideo-video video {
     display: block;
     margin: 0 auto;
+} */
+
+.myvideo-sCard {
+    border: 1px solid rgb(118, 118, 163);
+    border-radius: 20px;
+    margin-bottom: 2%;
+    display: inline-block;
+    padding: 10px 10px;
+    cursor: pointer;
 }
 
 .myvideo-video p {
@@ -19,17 +32,23 @@
     z-index: 9999;
     top: 0;
     left: 0;
-    right: 50;
-    bottom: 50;
+    /* right: 50; */
+    /* bottom: 50; */
+    /* margin-top: 8%;
+    margin-bottom: 2%; */
+    margin-top: 2%;
     background-color: #fff;
-    padding: 10px;
+    padding: 2px;
     display: none;
     background-color: rgb(98, 98, 138);
 }
 
 .myvideo-video:hover .myvideo-video-info {
     display: block;
-    margin: 40% 0% 0% 60%;
+    /* margin: 10% 0% 0% 60%; */
+    margin-left: 60%;
+    position: fixed;
     color: white;
     font-size: 1rem;
-} 
+}
+
