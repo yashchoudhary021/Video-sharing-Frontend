@@ -6,15 +6,17 @@ const Poster = () => {
     return (
         <>
             <section className="poster">
-                <h1>Tuner</h1>
+                <Link to="/">
+                    <h1>Tuner</h1>
+                </Link>
                 <div>Enjoy Multiple videos at one place</div>
                 {location.pathname === "/register" ?
                     <Link to="/sign">
-                        <p style={{color:"white" ,  fontSize:"1.9rem" ,marginTop:"30%" , marginLeft:"5%"}}>Sign In</p>
+                        <p style={{ color: "white", fontSize: "1.9rem", marginTop: "30%", marginLeft: "5%" }}>Sign In</p>
                     </Link>
                     :
                     <Link to="/register">
-                        <p style={{color:"white",  fontSize:"1.9rem" ,marginTop:"30%" , marginLeft:"5%"}}>Register</p>
+                        <p style={{ color: "white", fontSize: "1.9rem", marginTop: "30%", marginLeft: "5%" }}>Register</p>
                     </Link>
                 }
             </section>
