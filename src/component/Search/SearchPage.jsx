@@ -37,7 +37,7 @@ const SearchPage = () => {
           data && data.map((sData, i) => {
             return (
               <div key={i} className="searchPage-videoCard" onClick={() => handleVideoClick(sData.video.vfile)}>
-                <video src={sData.video.vfile} height="200px" width="300px" controls></video>
+                <video src={sData.video.vfile} height="200px" width="270px" controls></video>
                 <p>{sData.video.name} [{sData.video.category}]</p>
               </div>
             )

@@ -116,7 +116,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 20px;
-    margin-left: 3.5%;
+    /* margin-left: 1.5%;  */
 }
 
 
@@ -127,6 +127,7 @@ body {
     display: inline-block;
     padding: 10px 10px;
     cursor: pointer;
+    margin-left: 2%; 
     /* max-width: 300px; */
 }
 
