@@ -5,11 +5,13 @@ import Card from './Card'
 
 const Home = () => {
     return (
-        <div>
+        <>
             <NavBar />
+        {/* <div style={{display:"flex", flexDirection:"column"}}> */}
             <Ad />
             <Card />
-        </div>
+        {/* </div> */}
+        </>
     )
 }
 

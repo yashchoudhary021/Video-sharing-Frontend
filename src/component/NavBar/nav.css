@@ -67,18 +67,20 @@
     backdrop-filter: blur(2px);
 }
 
-.container section {
+/* .container section {
     color: #cccccc;
     margin-left: 54px;
-}
+} */
 
 .Container-Section {
+    position: fixed;
+    z-index: 9999;
     border-radius: 10px;
     border: 1px solid rgb(120, 120, 126);
     padding: 30px 30px;
     background-color: black;
-    margin-top: 30%;
-    margin-left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
 }
 

@@ -5,6 +5,8 @@ import "./nav.css";
 
 function Nav2() {
 
+  const navigate = useNavigate()
+
   // For Upload Modal
   const [show, setShow] = useState(false);
 
@@ -38,19 +40,23 @@ function Nav2() {
     }).then((res) => {
       if (res.status === 200) {
         window.alert(res.data.message)
+        navigate("/")
       }
-    }).catch((err) => { console.log(err) })
+    }).catch((err) => { 
+      console.log(err);
+      window.alert("OOPS!!! Uploading Failed")
+    })
     setShow(false)
   }
 
   // For Sending token to backend
-  const navigation = useNavigate()
+  
   const handelSignOut = () => {
     const token = localStorage.getItem("loginToken");
     // console.log(token);
     axios.post("https://tuner.onrender.com/logout", { token: token }).then((res) => {
       window.alert(res.data.msg);
-      navigation("/sign")
+      navigate("/sign")
       localStorage.clear("loginToken");
     }).catch((err) => {
       console.log(err);
@@ -58,11 +64,24 @@ function Nav2() {
     })
   }
 
+  //Search Function
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleKeyDown = (event) => {
+    if (event.keyCode === 13) {
+      search();
+    }
+  };
+  const search = ()=>{
+    navigate(`/search/${searchTerm}`)
+  }
+
   return (<>
     <nav>
       <div className="Container">
-        <span id="Nav2-heading" onClick={() => navigation("/")}>Tuner</span>
-        <input placeholder="Search" className="input" type="text" />
+        <span id="Nav2-heading" onClick={() => navigate("/")}>Tuner</span>
+        <input placeholder="Search" className="input" type="text" onChange={(e)=> setSearchTerm(e.target.value)} onKeyDown={handleKeyDown} value={searchTerm}/>
         <Link to="/myvideos" className="btn-11 com-btn">My Videos</Link>
         <span className="com-btn">|</span>
         <Link to="/myvideos" className="btn-2 com-btn" onClick={() => setShow(true)}>Upload</Link>

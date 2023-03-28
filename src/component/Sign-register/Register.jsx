@@ -3,7 +3,7 @@ import Poster from './Poster';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import './style.css';
-import NavBar from '../NavBar/NavBar';
+// import NavBar from '../NavBar/NavBar';
 
 function Register() {
     const navigate = useNavigate();
@@ -44,7 +44,7 @@ function Register() {
     }
 
     return (<>
-        <NavBar />
+        {/* <NavBar /> */}
         <main className="sr_main">
             <Poster />
             <section className="register">
