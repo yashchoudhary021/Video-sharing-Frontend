@@ -8,11 +8,6 @@
     margin: 1% ;
 }
 
-/* .myvideo-video video {
-    display: block;
-    margin: 0 auto;
-} */
-
 .myvideo-sCard {
     border: 1px solid rgb(118, 118, 163);
     border-radius: 20px;
@@ -32,10 +27,6 @@
     z-index: 9999;
     top: 0;
     left: 0;
-    /* right: 50; */
-    /* bottom: 50; */
-    /* margin-top: 8%;
-    margin-bottom: 2%; */
     margin-top: 2%;
     background-color: #fff;
     padding: 2px;
@@ -45,10 +36,10 @@
 
 .myvideo-video:hover .myvideo-video-info {
     display: block;
-    /* margin: 10% 0% 0% 60%; */
     margin-left: 60%;
     position: fixed;
     color: white;
     font-size: 1rem;
+    margin-top: 0;
 }
 
