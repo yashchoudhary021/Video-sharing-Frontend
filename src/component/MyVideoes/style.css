@@ -50,5 +50,7 @@
     position: fixed;
     color: white;
     font-size: 1rem;
+    margin-top: 0;
+    padding-bottom: 2%;
 }
 
