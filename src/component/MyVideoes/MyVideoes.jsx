@@ -27,12 +27,16 @@ const MyVideoes = () => {
         <br />
         <p style={{ textAlign: "center" }} >{user.userName}</p>
       </div>
-      <div >
+      <div id="myvideo-wrapper-div">
         {data.map((sData, i) => {
           return (
             < div key={i} class="myvideo-video">
+              <div className='myvideo-sCard'>
               <video src={sData.video.vfile} height="300px" width="300px" controls></video>
               <p>{sData.video.name} &nbsp;&nbsp;&nbsp; [{sData.video.visibility}]</p>
+              </div>
+              {/* <video src={sData.video.vfile} height="300px" width="300px" controls></video>
+              <p>{sData.video.name} &nbsp;&nbsp;&nbsp; [{sData.video.visibility}]</p> */}
               <div className="myvideo-video-info">
                 <video src={sData.video.vfile} height="500px" width="500px" controls ></video>
                 <p >{sData.video.name} &nbsp;&nbsp;&nbsp; [{sData.video.visibility}]</p>
